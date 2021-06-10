@@ -1,0 +1,41 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/app/development/Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    tty: true
+    restart: always
+
+  db:
+    build: ./docker/mysql
+    container_name: db
+    restart: always
+    environment:
+      MYSQL_DATABASE: sortie
+      MYSQL_USER: sortie
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - sockets:/app/tmp/sockets
+    depends_on:
+      - app
+
+volumes:
+  sockets:
