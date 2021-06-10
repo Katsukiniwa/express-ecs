@@ -7,8 +7,7 @@
     "dev": "ts-node src/index.ts",
     "dev:watch": "ts-node-dev --respawn src/index.ts",
     "clean": "rimraf dist/*",
-    "tsc": "tsc",
-    "build": "npm-run-all clean tsc",
+    "build": "tsc",
     "start": "node ."
   },
   "keywords": [],
