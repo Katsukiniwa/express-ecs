@@ -13,6 +13,6 @@ export class Novel extends Entity {
   }
 
   get title(): string {
-    return this._title.title;
+    return this._title.value;
   }
 }
