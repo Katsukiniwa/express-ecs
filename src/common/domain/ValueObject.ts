@@ -1,8 +1,6 @@
 import { shallowEqual } from "shallow-equal-object";
 
 export abstract class ValueObject<T> {
-  // 何が渡ってくるか分からないので仕方なくanyを使っている
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   readonly [key: string]: any;
 
   constructor() {
