@@ -1,6 +1,7 @@
 version: "3"
 services:
   app:
+    container_name: app
     build:
       context: .
       dockerfile: ./docker/app/development/Dockerfile
@@ -27,6 +28,7 @@ services:
       - ./docker/mysql/conf.d:/etc/mysql/conf.d
 
   nginx:
+    container_name: nginx
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
