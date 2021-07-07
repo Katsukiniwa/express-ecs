@@ -17,9 +17,9 @@ RUN apt-get update -y && \
   npm install npm@latest && \
   npm install
 
-RUN npx prisma introspect
-
 COPY . /app
+
+RUN npx prisma generate
 
 RUN npm run build
 
