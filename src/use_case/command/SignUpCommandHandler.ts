@@ -1,6 +1,12 @@
 import { CommandHandler } from "../../common/use_case/CommandHandler";
+import { UserAccountRepository } from "../../domain/model/user_account/UserAccountRepository";
 import { SignUpCommand } from "./SignUpCommand";
 
-export interface SignUpCommandHandler extends CommandHandler<SignUpCommand> {
-  handle(c: SignUpCommand): void;
+export class SignUpCommandHandler implements CommandHandler<SignUpCommand> {
+  constructor(
+    private userRepository: UserAccountRepository
+  ) {}
+
+  public handle(command: SignUpCommand) {
+  }
 }

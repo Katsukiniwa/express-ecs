@@ -1,4 +1,4 @@
-import { ValueObject } from "../../common/domain/ValueObject";
+import { ValueObject } from "../../../common/domain/ValueObject";
 
 export class AuthorName extends ValueObject<AuthorName> {
   public readonly value: string;

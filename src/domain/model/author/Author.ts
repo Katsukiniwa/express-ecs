@@ -1,4 +1,4 @@
-import { Entity } from "../../common/domain/Entity";
+import { Entity } from "../../../common/domain/Entity";
 import { AuthorName } from "./AuthorName";
 
 /**
@@ -7,7 +7,7 @@ import { AuthorName } from "./AuthorName";
  */
 export class Author extends Entity {
   public readonly id: number | null;
-  private readonly _name: AuthorName;
+  private readonly _name: string;
   private readonly _description: string;
   private readonly _icon: string;
 
@@ -15,12 +15,12 @@ export class Author extends Entity {
     super();
 
     this.id = id;
-    this._name = new AuthorName(name);
+    this._name = name;
     this._description = description;
     this._icon = icon;
   }
 
-  get name(): AuthorName {
+  get name(): string {
     return this._name;
   }
 

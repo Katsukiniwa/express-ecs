@@ -1,4 +1,4 @@
-import { Entity } from "../../common/domain/Entity";
+import { Entity } from "../../../common/domain/Entity";
 import { Author } from "../author/Author";
 import { Section } from "../section/Section";
 import { NovelTitle } from "./NovelTitle";
@@ -9,7 +9,7 @@ import { NovelTitle } from "./NovelTitle";
  */
 export class Novel extends Entity {
   public readonly id: number | null;
-  private readonly _title: NovelTitle;
+  private readonly _title: string;
   private readonly _sections: Section[];
   private readonly _author: Author;
 
@@ -17,13 +17,13 @@ export class Novel extends Entity {
     super();
 
     this.id = id;
-    this._title = new NovelTitle(title);
+    this._title = title;
     this._sections = sections;
     this._author = author;
   }
 
   get title(): string {
-    return this._title.value;
+    return this._title;
   }
 
   get sections(): Section[] {

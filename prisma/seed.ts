@@ -17,10 +17,11 @@ async function main() {
       author: {
         create: {
           name: 'bob',
+          description: 'My name is bob',
           icon: 'https://example.com',
           novels: {
             create: {
-              title: 'sample novel'
+              title: 'sample novel',
             }
           }
         }
