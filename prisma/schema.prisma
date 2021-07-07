@@ -1,46 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model users {
-  id Int @default(autoincrement()) @id
+  id         Int      @id @default(autoincrement())
   created_at DateTime @default(now()) @db.Timestamp(6)
   updaetd_at DateTime @default(now()) @db.Timestamp(6)
 }
 
 model user_accounts {
-  id Int @default(autoincrement()) @id
-  email String @unique
-  hashed_password String @unique @map("hashedPassword")
-  created_at DateTime @default(now()) @db.Timestamp(6)
-  updaetd_at DateTime @default(now()) @db.Timestamp(6)
+  id              Int      @id @default(autoincrement())
+  email           String   @unique
+  hashed_password String   @unique @map("hashedPassword")
+  created_at      DateTime @default(now()) @db.Timestamp(6)
+  updaetd_at      DateTime @default(now()) @db.Timestamp(6)
 }
 
 model authors {
-  id Int @default(autoincrement()) @id
-  name String
-  icon String
-  novels novels[]
+  id           Int            @id @default(autoincrement())
+  name         String
+  icon         String
+  created_at   DateTime       @default(now()) @db.Timestamp(6)
+  updaetd_at   DateTime       @default(now()) @db.Timestamp(6)
   draft_novels draft_novels[]
-  created_at DateTime @default(now()) @db.Timestamp(6)
-  updaetd_at DateTime @default(now()) @db.Timestamp(6)
+  novels       novels[]
 }
 
 model novels {
-  id Int @default(autoincrement()) @id
-  title String
-  author_id Int @map("authorId")
-  author authors @relation(fields: [author_id], references: [id])
+  id        Int     @id @default(autoincrement())
+  title     String
+  author_id Int     @map("authorId")
+  author    authors @relation(fields: [author_id], references: [id])
+
+  @@index([author_id], name: "authorId")
 }
 
 model draft_novels {
-  id Int @default(autoincrement()) @id
-  title String?
+  id        Int     @id @default(autoincrement())
+  title     String?
   author_id Int
-  author authors @relation(fields: [author_id], references: [id])
+  author    authors @relation(fields: [author_id], references: [id])
+
+  @@index([author_id], name: "author_id")
 }
