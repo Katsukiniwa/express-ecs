@@ -14,6 +14,8 @@ RUN apt-get update -y && \
   apt-get upgrade -y && \
   apt-get install -y \
   libssl-dev && \
+  git \
+  vim \
   npm install npm@latest && \
   npm install
 

@@ -13,17 +13,15 @@ COPY package*.json /app
 RUN apt-get update -y && \
   apt-get upgrade -y && \
   apt-get install -y \
-  libssl-dev && \
-  npm install npm@latest && \
+  libssl-dev \
+  git \
+  vim
+  
+RUN npm install npm@latest && \
   npm install
 
 COPY . /app
 
-# RUN npx prisma migrate dev
 RUN npx prisma generate
 
 RUN npm run build
-
-EXPOSE 8080
-
-# CMD npm run dev:watch
