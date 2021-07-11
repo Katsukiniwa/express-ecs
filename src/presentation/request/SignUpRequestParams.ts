@@ -1,16 +1,20 @@
-import { request, Request } from "express";
-import { RequestParams } from "../../common/presentation/RequestParams";
+import { TypedRequestBody } from "../../common/infrastructure/ExpressRequest";
 import { SignUpCommand } from "../../use_case/command/SignUpCommand";
 
-export class SignUpRequestParams extends RequestParams {
+interface Params {
+  userName: string;
+  emailAddress: string;
+  rawPassword: string;
+  rawPasswordConfirmation: string;
+}
+
+export class SignUpRequestParams {
   private readonly _userName: string;
   private readonly _emailAddress: string;
   private readonly _rawPassword: string;
   private readonly _rawPasswordConfirmation: string;
 
-  constructor(request: Request) {
-    super(request);
-
+  constructor(request: TypedRequestBody<Params>) {
     this._userName = request.body.userName;
     this._emailAddress = request.body.emailAddress;
     this._rawPassword = request.body.rawPassword;

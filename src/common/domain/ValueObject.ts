@@ -11,6 +11,6 @@ export abstract class ValueObject<T> {
     if (vo === null || vo === undefined) {
       return false;
     }
-    return shallowEqual(this, vo)
+    return shallowEqual(this, vo);
   }
 }

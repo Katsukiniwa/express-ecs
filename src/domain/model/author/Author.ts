@@ -1,5 +1,4 @@
 import { Entity } from "../../../common/domain/Entity";
-import { AuthorName } from "./AuthorName";
 
 /**
  * @name 著者
@@ -11,7 +10,12 @@ export class Author extends Entity {
   private readonly _description: string;
   private readonly _icon: string;
 
-  constructor(id: number | null, name: string, description: string, icon: string) {
+  constructor(
+    id: number | null,
+    name: string,
+    description: string,
+    icon: string
+  ) {
     super();
 
     this.id = id;

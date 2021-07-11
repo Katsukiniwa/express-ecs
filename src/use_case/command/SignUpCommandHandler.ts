@@ -3,10 +3,9 @@ import { UserAccountRepository } from "../../domain/model/user_account/UserAccou
 import { SignUpCommand } from "./SignUpCommand";
 
 export class SignUpCommandHandler implements CommandHandler<SignUpCommand> {
-  constructor(
-    private userRepository: UserAccountRepository
-  ) {}
+  constructor(private userRepository: UserAccountRepository) {}
 
   public handle(command: SignUpCommand) {
+    console.log(command);
   }
 }

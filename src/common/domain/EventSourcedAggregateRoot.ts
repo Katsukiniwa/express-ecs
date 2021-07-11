@@ -5,6 +5,6 @@ export abstract class EventSourcedAggregateRoot {
   abstract domainEvents: DomainEvent[];
 
   protected occur(domainEvent: DomainEvent): void {
-    this.domainEvents = [...this.domainEvents, domainEvent]
+    this.domainEvents = [...this.domainEvents, domainEvent];
   }
 }

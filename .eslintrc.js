@@ -11,6 +11,13 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: ['./tsconfig.eslint.json']
   },
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: [".ts"]
+      }
+    }
+  },
   plugins: [
     '@typescript-eslint',
     'import',

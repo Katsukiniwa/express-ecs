@@ -1,5 +1,5 @@
 import express from "express";
-import { novelRouter } from './infrastructure/router/novel'
+import { novelRouter } from "./infrastructure/router/novel";
 
 const app = express();
 

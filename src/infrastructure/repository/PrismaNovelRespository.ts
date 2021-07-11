@@ -13,18 +13,18 @@ export class PrismaNovelRepository implements NovelRepository {
   public async findById(novelId: number): Promise<Novel> {
     const prismaNovel = await this.prisma.novels.findUnique({
       where: {
-        id: novelId
+        id: novelId,
       },
       include: {
-        author: true
-      }
-    })
+        author: true,
+      },
+    });
 
     if (prismaNovel == null) {
-      throw new Error('novel not found');
+      throw new Error("novel not found");
     }
 
-    console.log(prismaNovel)
+    console.log(prismaNovel);
 
     return new Novel(
       prismaNovel.id,
@@ -36,6 +36,6 @@ export class PrismaNovelRepository implements NovelRepository {
         prismaNovel.author.description,
         prismaNovel.author.icon
       )
-    )
+    );
   }
 }

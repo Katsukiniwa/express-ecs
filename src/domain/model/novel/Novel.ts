@@ -1,7 +1,6 @@
 import { Entity } from "../../../common/domain/Entity";
 import { Author } from "../author/Author";
 import { Section } from "../section/Section";
-import { NovelTitle } from "./NovelTitle";
 
 /**
  * @name 小説
@@ -13,7 +12,12 @@ export class Novel extends Entity {
   private readonly _sections: Section[];
   private readonly _author: Author;
 
-  constructor(id: number | null, title: string, sections: Section[], author: Author) {
+  constructor(
+    id: number | null,
+    title: string,
+    sections: Section[],
+    author: Author
+  ) {
     super();
 
     this.id = id;
