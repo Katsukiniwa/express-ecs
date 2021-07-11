@@ -4,7 +4,7 @@ import { novelRouter } from "./infrastructure/router/novel";
 const app = express();
 
 app.get("/", (_request, response) => {
-  response.send("Hello express ecs");
+  response.send("Hello express ecs ver2");
 });
 
 app.use(novelRouter);
