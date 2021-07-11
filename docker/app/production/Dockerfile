@@ -24,4 +24,6 @@ RUN npx prisma generate
 
 RUN npm run build
 
-CMD npm run start
+EXPOSE 8080
+
+CMD [ "npm", "run", "start" ]
