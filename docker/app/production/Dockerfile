@@ -6,7 +6,6 @@ WORKDIR /app
 
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
-ENV HOST 0.0.0.0
 
 COPY package*.json /app
 

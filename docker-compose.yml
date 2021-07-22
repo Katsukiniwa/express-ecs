@@ -24,7 +24,6 @@ services:
     stdin_open: true
     tty: true
     restart: always
-    command: ["npm", "run", "dev"]
     build:
       context: .
       dockerfile: ./docker/app/development/Dockerfile

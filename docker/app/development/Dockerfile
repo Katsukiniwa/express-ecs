@@ -6,7 +6,6 @@ WORKDIR /app
 
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
-ENV HOST 0.0.0.0
 
 COPY package*.json /app
 
@@ -25,3 +24,5 @@ COPY . /app
 RUN npx prisma generate
 
 RUN npm run build
+
+ENTRYPOINT ["docker/app/development/docker-entrypoint.sh"]
