@@ -1,10 +1,4 @@
-import { DomainEvent } from "./DomainEvent";
+import { AggregateRoot } from "./AggregateRoot";
 
-export abstract class EventSourcedAggregateRoot {
-  abstract id: number | null;
-  abstract domainEvents: DomainEvent[];
-
-  protected occur(domainEvent: DomainEvent): void {
-    this.domainEvents = [...this.domainEvents, domainEvent];
-  }
+export abstract class EventSourcedAggregateRoot<T> extends AggregateRoot<T> {
 }

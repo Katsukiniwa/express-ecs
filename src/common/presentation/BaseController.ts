@@ -17,7 +17,7 @@ export abstract class BaseController {
     return res.status(code).json({ message });
   }
 
-  public success<T>(res: Response, dto?: T) {
+  public success<T>(res: Response, dto?: T): Response {
     const arg = !!dto
     if (arg) {
       return res.status(200).json(dto);

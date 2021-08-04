@@ -1,3 +1,7 @@
-export abstract class Entity {
-  abstract id: number | null;
+export abstract class Entity<T> {
+  abstract id: string;
+
+  public equals(that: Entity<T>): boolean {
+    return this.id === that.id;
+  }
 }
