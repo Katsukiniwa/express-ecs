@@ -8,50 +8,42 @@ datasource db {
 }
 
 model users {
-  id         Int            @id @default(autoincrement())
-  created_at DateTime       @default(now()) @db.Timestamp(6)
-  updaetd_at DateTime       @default(now()) @db.Timestamp(6)
-  author     authors?
-  account    user_accounts?
+  id            String          @id
+  created_at    DateTime        @default(now()) @db.Timestamp(6)
+  updaetd_at    DateTime        @default(now()) @db.Timestamp(6)
+  user_accounts user_accounts[]
 }
 
 model user_accounts {
-  id              Int      @id @default(autoincrement())
+  id              String   @id
   email           String   @unique
   hashed_password String   @unique @map("hashedPassword")
   created_at      DateTime @default(now()) @db.Timestamp(6)
   updaetd_at      DateTime @default(now()) @db.Timestamp(6)
-  user_id         Int      @unique
+  user_id         String   @unique
   user            users    @relation(fields: [user_id], references: [id])
 }
 
 model authors {
-  id           Int            @id @default(autoincrement())
-  name         String
-  icon         String
-  created_at   DateTime       @default(now()) @db.Timestamp(6)
-  updaetd_at   DateTime       @default(now()) @db.Timestamp(6)
-  user_id      Int            @unique
-  description  String
-  user         users          @relation(fields: [user_id], references: [id])
-  draft_novels draft_novels[]
-  novels       novels[]
+  id          String   @id
+  name        String
+  icon        String
+  created_at  DateTime @default(now()) @db.Timestamp(6)
+  updaetd_at  DateTime @default(now()) @db.Timestamp(6)
+  user_id     String   @unique
+  description String
 }
 
 model novels {
-  id        Int     @id @default(autoincrement())
+  id        String @id
   title     String
-  author_id Int     @map("authorId")
-  author    authors @relation(fields: [author_id], references: [id])
-
-  @@index([author_id], name: "authorId")
+  author_id String
 }
 
 model draft_novels {
-  id        Int     @id @default(autoincrement())
+  id        String  @id
   title     String?
-  author_id Int
-  author    authors @relation(fields: [author_id], references: [id])
+  author_id String
 
   @@index([author_id], name: "author_id")
 }
